@@ -51,17 +51,7 @@
 										<td>Власне оцінювання за критеріями стейкхолдерів:</td>
 										<td><button style="font-size: 130%;"
 						data-original-title="Tickets" data-toggle="modal" 
-						class="btn btn-sm btn-info" data-target=".bs-example-modal-lg"><i
-							class="glyphicon glyphicon-qrcode">  Оцінити</i></button></td>
-									</tr>
-								</security:authorize>
-								
-								<security:authorize access="hasRole('lecturer')">
-									<tr>
-										<td>Оцінювання студентів:</td>
-										<td><button style="font-size: 130%;"
-						data-original-title="Tickets" data-toggle="modal" 
-						class="btn btn-sm btn-info" data-target=".bs-example-modal-lg1"><i
+						class="btn btn-sm btn-info" data-target=".bs-example-modal-lg""><i
 							class="glyphicon glyphicon-qrcode">  Оцінити</i></button></td>
 									</tr>
 								</security:authorize>
@@ -74,7 +64,7 @@
 	</section>
 </main>
 
-<!-- Оцінювання студентом -->
+<!-- Оцінювання -->
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -122,77 +112,6 @@
   </div>
 </div>
 
-<!-- Оцінювання викладачем -->
-<div class="modal fade bs-example-modal-lg1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-    
-    	<div class="modal-header">
-        	<button type="button" class="close" data-dismiss="modal">&times;</button>
-        	<h4 class="modal-title" align="center">Оцінювання</h4>
-      	</div>
-      	
-      	<div class="modal-body" align="center">
-      	
-      		<button id="UPP" onclick="visibilityTrue1()"
-			class="btn btn-sm btn-info"><i class="glyphicon glyphicon-plus"></i> УПП</button>
-			<div id="UPP1">
-				<button onclick="visibilityFalse1()"
-				class="btn btn-sm btn-info"><i class="glyphicon glyphicon-plus"></i> Приховати</button>
-				<table>
-					<thead>
-						<tr>
-							<th style="text-align:center;">Студент</th>
-							<th style="text-align:center;">Оцінка</th>
-						</tr>
-					</thead>
-					<c:forEach items="${users}" var="myUser">
-						<tr>
-							<td>
-								${myUser.name} ${myUser.surname}
-							</td>
-							<td>
-								<input type="number" name="quantity" min="1" max="100">
-							</td>
-						</tr>
-					</c:forEach>
-				</table>
-			</div>
-			<br />
-			
-			<button id="lab" onclick="visibilityTrue2()"
-			class="btn btn-sm btn-info"><i class="glyphicon glyphicon-plus"></i> Проект "Лабораторія"</button>
-			<div id="lab1">
-				<button onclick="visibilityFalse2()"
-				class="btn btn-sm btn-info"><i class="glyphicon glyphicon-plus"></i> Приховати</button>
-				<table>
-					<thead>
-						<tr>
-							<th style="text-align:center;">Студент</th>
-							<th style="text-align:center;">Оцінка</th>
-						</tr>
-					</thead>
-					<c:forEach items="${users}" var="myUser">
-						<tr>
-							<td>
-								${myUser.name} ${myUser.surname}
-							</td>
-							<td>
-								<input type="number" name="quantity" min="1" max="100">
-							</td>
-						</tr>
-					</c:forEach>
-				</table>
-			</div>
-      	</div>
-      
-      	<div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Назад</button>
-        </div>
-    </div>
-  </div>
-</div>
-
 <script>
 	function outputUpdate1(vol) {
 		document.querySelector('#volume1').value = vol;
@@ -205,23 +124,6 @@
 	}
 	function outputUpdate4(vol) {
 		document.querySelector('#volume4').value = vol;
-	}
-	
-	function visibilityTrue1(){
-		document.getElementById("UPP").style.visibility = "hidden";
-		document.getElementById("UPP1").style.visibility = "visible";
-	}
-	function visibilityFalse1(){
-		document.getElementById("UPP").style.visibility = "visible";
-		document.getElementById("UPP1").style.visibility = "hidden";
-	}
-	function visibilityTrue2(){
-		document.getElementById("lab").style.visibility = "hidden";
-		document.getElementById("lab1").style.visibility = "visible";
-	}
-	function visibilityFalse2(){
-		document.getElementById("lab").style.visibility = "visible";
-		document.getElementById("lab1").style.visibility = "hidden";
 	}
 </script>
 

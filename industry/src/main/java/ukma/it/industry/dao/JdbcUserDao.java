@@ -2,7 +2,6 @@ package ukma.it.industry.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -17,8 +16,6 @@ public class JdbcUserDao implements UserDao{
 	private static final String SQL_INSERT_USER = "INSERT INTO player(email, name, surname, password, phone_number, role) VALUES (?, ?, ?, ?, ?, ?)";
 
 	private static final String SQL_GET_USER_BY_EMAIL = "SELECT * FROM player WHERE email = ?";
-	
-	private static final String SQL_GET_USERs_BY_ROLE = "SELECT * FROM player WHERE role = 'student'";
 	
 	private static final String SQL_GET_USER_BY_ID = "SELECT * FROM player WHERE id = ?";
 	
@@ -69,11 +66,6 @@ public class JdbcUserDao implements UserDao{
 	public void delete(long id) throws SQLException {
 		// TODO Auto-generated method stub
 		
-	}
-
-	@Override
-	public List<User> getUsersByRole() {
-		return jdbcTemplate.query(SQL_GET_USERs_BY_ROLE, new UserMapper());
 	}
 
 }
