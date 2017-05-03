@@ -28,7 +28,5 @@
 		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
 	</bean>
 	<tx:annotation-driven />
-
-	<import resource="hibernate_config.xml"/>
 	
 </beans>
