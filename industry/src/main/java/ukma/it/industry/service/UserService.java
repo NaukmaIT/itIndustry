@@ -3,6 +3,7 @@ package ukma.it.industry.service;
 import java.sql.SQLException;
 import java.util.List;
 
+import ukma.it.industry.entity.Question;
 import ukma.it.industry.entity.User;
 
 public interface UserService {
@@ -18,4 +19,8 @@ public interface UserService {
 	public void delete(long id) throws SQLException;
 	
 	public List<User> getUsersByRole();
+	
+	public List<Question> getAllQuestions();
+	
+	public void create(String question, String name) throws SQLException;
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ukma.it.industry.dao.UserDao;
+import ukma.it.industry.entity.Question;
 import ukma.it.industry.entity.User;
 
 @Service
@@ -45,6 +46,17 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public List<User> getUsersByRole() {
 		return userDao.getUsersByRole();
+	}
+
+	@Override
+	public List<Question> getAllQuestions() {
+		return userDao.getAllQuestions();
+	}
+
+	@Override
+	public void create(String question, String name) throws SQLException {
+		Question questionary = new Question(question, name);
+		userDao.create(questionary);
 	}
 
 }

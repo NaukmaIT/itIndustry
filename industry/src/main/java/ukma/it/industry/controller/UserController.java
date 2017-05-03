@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import ukma.it.industry.entity.Question;
 import ukma.it.industry.entity.User;
 import ukma.it.industry.service.UserService;
 
@@ -43,6 +44,16 @@ public class UserController {
 		model.addAttribute("users", users);
 		
 		return "profile";
+	}
+	
+	@RequestMapping(value = "/questionary", method = RequestMethod.GET)
+	public String questionary(Model model, Principal principal) {
+		
+		List<Question> questions = userService.getAllQuestions();
+		
+		model.addAttribute("questions", questions);
+		
+		return "questionary";
 	}
 	
 	/**
@@ -119,5 +130,23 @@ public class UserController {
 		}
 		
 		return "redirect:../..";
+	}
+	
+	@RequestMapping(value = "/newQuestion", method = RequestMethod.POST)
+	public String editPage(Model model,
+			HttpServletRequest req,
+			SecurityContextHolderAwareRequestWrapper request){
+		
+		String question = req.getParameter("question");
+		String name = req.getParameter("name");
+		
+		try {
+			userService.create(question,name);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return "redirect:questionary";
 	}
 }

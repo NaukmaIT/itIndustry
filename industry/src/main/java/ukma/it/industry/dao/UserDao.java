@@ -3,6 +3,7 @@ package ukma.it.industry.dao;
 import java.sql.SQLException;
 import java.util.List;
 
+import ukma.it.industry.entity.Question;
 import ukma.it.industry.entity.User;
 
 public interface UserDao {
@@ -33,4 +34,8 @@ public interface UserDao {
 	public void delete(long id) throws SQLException;
 	
 	public List<User> getUsersByRole();
+	
+	public List<Question> getAllQuestions();
+	
+	public void create(Question question) throws SQLException;
 }

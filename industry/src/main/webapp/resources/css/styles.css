@@ -355,3 +355,13 @@ input[type=range]:focus::-ms-fill-lower {
 input[type=range]:focus::-ms-fill-upper {
   background: #205928;
 }
+
+ul {
+    background: #32CD32;
+    padding: 20px;
+}
+
+ul li {
+    background: #00FF7F;
+    margin: 5px;
+}

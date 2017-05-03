@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import ukma.it.industry.dao.orm.QuestionMapper;
 import ukma.it.industry.dao.orm.UserMapper;
+import ukma.it.industry.entity.Question;
 import ukma.it.industry.entity.User;
 
 @Repository
@@ -18,7 +20,11 @@ public class JdbcUserDao implements UserDao{
 
 	private static final String SQL_GET_USER_BY_EMAIL = "SELECT * FROM player WHERE email = ?";
 	
-	private static final String SQL_GET_USERs_BY_ROLE = "SELECT * FROM player WHERE role = 'student'";
+	private static final String SQL_GET_ALL_QUESTIONS = "SELECT * FROM question";
+	
+	private static final String SQL_INSERT_QUESTION = "INSERT INTO question(questionary,name) VALUES(?,?)";
+	
+	private static final String SQL_GET_USERS_BY_ROLE = "SELECT * FROM player WHERE role = 'student'";
 	
 	private static final String SQL_GET_USER_BY_ID = "SELECT * FROM player WHERE id = ?";
 	
@@ -73,7 +79,22 @@ public class JdbcUserDao implements UserDao{
 
 	@Override
 	public List<User> getUsersByRole() {
-		return jdbcTemplate.query(SQL_GET_USERs_BY_ROLE, new UserMapper());
+		return jdbcTemplate.query(SQL_GET_USERS_BY_ROLE, new UserMapper());
+	}
+
+	@Override
+	public List<Question> getAllQuestions() {
+		return jdbcTemplate.query(SQL_GET_ALL_QUESTIONS, new QuestionMapper());
+	}
+
+	@Override
+	public void create(Question question) throws SQLException {
+		PreparedStatement ps = jdbcTemplate.getDataSource().getConnection().prepareStatement(SQL_INSERT_QUESTION);
+		ps.setString(1, question.getQuestionary());
+		ps.setString(2, question.getName());
+		
+		ps.executeUpdate();
+		ps.close();
 	}
 
 }
