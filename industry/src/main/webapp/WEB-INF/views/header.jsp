@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Home Page of Prozac">
 
-    <title>ПроЗаК</title>
+    <title>IT</title>
     
 	<!-- Shortcut -->
 	<link href="<c:url value="/resources/img/it.ico" />" rel="shortcut icon">

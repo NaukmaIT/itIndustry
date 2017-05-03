@@ -8,10 +8,14 @@
      
 <http use-expressions="true">
 		<intercept-url pattern="/" access="isAnonymous()" />
+		<intercept-url pattern="/welcome" access="isAnonymous()" />
+		<intercept-url pattern="/profile/**" access="isAuthenticated()" />
+		<intercept-url pattern="/questionary/**" access="isAuthenticated()" />
+		<intercept-url pattern="/curriculum/**" access="isAuthenticated()" />
 
 		<access-denied-handler error-page="/403" />
 
-		<form-login login-page='/login' login-processing-url="/j_spring_security_check"
+		<form-login login-page='/login?attention' login-processing-url="/j_spring_security_check"
 			default-target-url="/login" always-use-default-target="false"
 			authentication-failure-url="/login?error" username-parameter="username"
 			password-parameter="password" />
