@@ -1,6 +1,7 @@
 package ukma.it.industry.dao;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import ukma.it.industry.entity.User;
 
@@ -30,5 +31,7 @@ public interface UserDao {
 	 * @category delete user
 	 * */
 	public void delete(long id) throws SQLException;
+
+	public List<User> getUsersByRole();
 	
 }
