@@ -7,8 +7,6 @@
      http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
      
 <http use-expressions="true">
-		<intercept-url pattern="/" access="isAnonymous()" />
-		<intercept-url pattern="/welcome" access="isAnonymous()" />
 		<intercept-url pattern="/profile/**" access="isAuthenticated()" />
 		<intercept-url pattern="/questionary/**" access="isAuthenticated()" />
 		<intercept-url pattern="/curriculum/**" access="isAuthenticated()" />
@@ -27,9 +25,9 @@
 	<authentication-manager>
 		<authentication-provider>
 			<jdbc-user-service data-source-ref="dataSource"
-				users-by-username-query="select email, password, 1 as enabled from 
-users where email=?"
-				authorities-by-username-query="select email, role from users where email=?" />
+				users-by-username-query="select email as username, password, 1 as enabled from 
+player where email=?"
+				authorities-by-username-query="select email as username, role from player where email=?" />
 		</authentication-provider>
 
 	</authentication-manager>
