@@ -1,6 +1,7 @@
 package ukma.it.industry.service;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import ukma.it.industry.entity.User;
 
@@ -15,4 +16,6 @@ public interface UserService {
 	public void update(User user) throws SQLException;
 	
 	public void delete(long id) throws SQLException;
+	
+	public List<User> getUsersByRole();
 }

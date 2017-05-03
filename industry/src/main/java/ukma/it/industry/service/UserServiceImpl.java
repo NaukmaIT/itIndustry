@@ -1,6 +1,7 @@
 package ukma.it.industry.service;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,6 +40,11 @@ public class UserServiceImpl implements UserService{
 	public void delete(long id) throws SQLException {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public List<User> getUsersByRole() {
+		return userDao.getUsersByRole();
 	}
 
 }

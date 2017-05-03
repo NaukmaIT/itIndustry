@@ -2,6 +2,7 @@ package ukma.it.industry.controller;
 
 import java.security.Principal;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -36,7 +37,10 @@ public class UserController {
 		
 		User currentUser = userService.getUserByEmail(principal.getName());
 		
+		List<User> users = userService.getUsersByRole();
+		
 		model.addAttribute("user", currentUser);
+		model.addAttribute("users", users);
 		
 		return "profile";
 	}
